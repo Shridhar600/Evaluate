@@ -1,0 +1,23 @@
+.homepage{
+    height: 100vh;
+    background-color: #e6f2fe;
+    color: #252f3f;
+    font-family: 'Noto Sans JP', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage__text{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 60px;
+}
+
+.btn{
+    display: block !important;
+    margin: 50px auto;
+    padding: 15px 25px !important;
+    text-align: center;
+}

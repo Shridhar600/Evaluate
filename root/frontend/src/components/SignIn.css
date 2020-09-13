@@ -1,0 +1,28 @@
+.signIn{
+    background-color: #fff;
+    height: 100vh;
+    color: #252f3f;
+}
+
+.signIn div{
+    font-size: 50px;
+    text-align: center;
+    padding-top: 50px;
+    font-weight: 600;
+}
+
+.signIn img{
+    height: 25px;
+    width: 25px;
+    margin: auto 20px auto 0;
+}
+
+.signIn button{
+    display: block !important;
+    margin: 50px auto;
+    padding: 15px 45px !important;
+    text-align: center;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 18px;
+    font-weight: 400;
+}

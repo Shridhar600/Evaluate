@@ -1,0 +1,48 @@
+.type-select{
+    height: 80vh;
+    background-color: #fff;
+    color: #252f3f;
+    text-align: center;
+    align-items: center;
+}
+
+.welcome-text{
+    margin-top: 40px;
+    font-size: 50px;
+    font-weight: 600;    
+}
+
+.supporting-text{
+    margin-top: 10px;
+    font-size: 20px;
+    color: #bbbbbb;
+}
+
+.type-card{
+    margin: 30px auto;
+    text-align: left;
+    width: 50%;
+    border: 1px solid #cecece;
+}
+
+.user-type-form{
+    margin-top: 40px;
+}
+
+.continue{
+    margin-top: 50px;
+    padding: 15px 60px !important;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.user-type{
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+/* .MuiTypography-body1{
+    font-size: 1.3rem !important;
+} */

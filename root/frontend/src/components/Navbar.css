@@ -1,0 +1,22 @@
+.navbar-inner{
+    background: transparent;
+    color: blue;
+}
+
+.navbar{
+    background-color: #e6f2fe;
+}
+
+.brand{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+a{
+    color: #252f3f;
+}
+
+a:hover{
+    color: #252f3f;
+    text-decoration: none;
+}
