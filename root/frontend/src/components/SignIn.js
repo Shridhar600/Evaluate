@@ -7,7 +7,7 @@ const SignIn = () => {
     return (
         <div className="signIn">
             <div>Continue with Evaluate</div>
-            <Link to='/welcome'><button className="btn"><img src={Google} />Sign in with Google</button></Link>
+            <Link to='/welcome'><button className="btn"><img src={Google} alt="Google Logo" />Sign in with Google</button></Link>
         </div>
     )
 }

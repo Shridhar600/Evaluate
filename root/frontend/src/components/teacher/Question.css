@@ -35,3 +35,7 @@ label{
 .action-btn{
     display: flex;
 }
+
+.m-ans{
+    color: rgb(136, 136, 136);
+}

@@ -2,19 +2,19 @@ import React from 'react'
 
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+
 
 import './Question.css'
+import MultipleChoice from './Ques/MultipleChoice'
+import ShortAnswer from './Ques/ShortAnswer'
+import MultipleAnswer from './Ques/MultipleAnswer'
+
 
 class Question extends React.Component{
     state = {open:false, questype: 'multiple-choice'}
@@ -52,25 +52,10 @@ class Question extends React.Component{
                         <Paper className="paper" >
                             <div className="question" >
                                 <input placeholder="Question" />
-                            </div>
-                            <div className="mcq">
-                                <FormControl>
-                                    <RadioGroup className="mcq-option" aria-label="quiz" name="type" onChange={this.handleRadioChange}>
-                                        <FormControlLabel value="option1" control={<Radio />} label="Option" />
-                                        <FormControlLabel value="option2" control={<Radio />} label="Option" />
-                                        <FormControlLabel value="option3" control={<Radio />} label="Option" />
-                                        <FormControlLabel value="option4" control={<Radio />} label="Option" />
-                                    </RadioGroup>
-                                </FormControl>
-                            </div>
-                            <div className="multiple-answer">
-
-                            </div>
-                            <div className="short-answer">
-                                <div className="question">
-                                    <input placeholder="Answer" />
-                                </div>
-                            </div>                            
+                            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                            {this.state.questype === "multiple-choice" && <MultipleChoice/>}
+                            {this.state.questype === "multiple-answer" && <MultipleAnswer/>}
+                            {this.state.questype === "short-answer" && <ShortAnswer/>}
                             <hr />
                             <div>
                                 <div className="action-btn">
@@ -91,23 +76,16 @@ class Question extends React.Component{
                                         </Select>
                                     </FormControl>
                                     <Button
-                                        variant="contained"
                                         variant="outlined"
                                         color="secondary"
                                         className="del-ques"
                                         size="large"
+                                        onClick={this.props.delete}
                                         startIcon={<DeleteIcon />}
                                     >Delete</Button>
                                 </div> 
                             </div>
                         </Paper>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className="add-ques"
-                            size="large"
-                            startIcon={<AddCircleIcon />}
-                        >Add</Button>
                     </Grid>
                 </Grid>
             </div>

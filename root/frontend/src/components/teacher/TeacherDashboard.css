@@ -1,0 +1,98 @@
+.teacher-dashboard{
+    /* margin: 30px; */
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+}
+
+.MuiAvatar-colorDefault{
+    background-color: plum !important;
+}
+
+.profile{
+    background-color: #fff;
+    border-radius: 5px;
+    height: 100vh;
+    padding-right: 20px;
+    border-right: 1px solid rgb(236, 236, 236);
+    width: 20%;
+}
+
+.user-name{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.logout{
+    margin-top: 15px !important;
+    padding: 10px 20px !important;
+    width: 150px;
+}
+
+.settings{
+    margin-top: 40px !important;
+    padding: 10px 20px !important;
+    width: 150px;
+}
+
+.assignments{
+    padding: 10px 30px ;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.create-assignments{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6f2fe;
+    color: #1c65f0;
+    font-size: 18px;
+}
+
+.create-assignments span{
+    margin-left: 10px;
+}
+
+.exam{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.right{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+.left{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.subject{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.view-response{
+    cursor: pointer;
+    color: #1c65f0;
+}
+
+.published-assignments{
+    background-color: #e6f2fe;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}

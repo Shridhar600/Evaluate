@@ -14,10 +14,10 @@ const Welcome = () =>{
 
     const onFormSubmit = (event) => {
         event.preventDefault()
-        if (value == 'student'){            
+        if (value === 'student'){            
             history.push('/student/dashboard');
         }
-        else if (value == 'teacher'){            
+        else if (value === 'teacher'){            
             history.push('/teacher/dashboard');
         }
     }
