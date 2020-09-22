@@ -8,6 +8,7 @@ import Welcome from './Welcome'
 import StudentDashboard from './student/StudentDashboard'
 import TeacherDashboard from './teacher/TeacherDashboard'
 import CreateExam from './teacher/CreateExam'
+import Responses from './teacher/Responses'
 
 class App extends React.Component{
     render(){
@@ -21,6 +22,7 @@ class App extends React.Component{
                     <Route component={StudentDashboard} path="/student/dashboard" />
                     <Route component={TeacherDashboard} path="/teacher/dashboard" />
                     <Route component={CreateExam} path="/teacher/new" />
+                    <Route component={Responses} path="/teacher/responses" />
                 </Switch>
             </div>
         )

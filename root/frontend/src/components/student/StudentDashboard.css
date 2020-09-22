@@ -1,0 +1,66 @@
+.student-dashboard{
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+}
+
+.assignment-code{
+    border: 2px solid #e6f2fe;
+    padding: 15px 100px 15px 15px;
+    border-radius: 5px;
+    color: #252f3f);
+}
+
+.assignment-code:focus{
+    border: 2px solid #1c65f0;
+    transition: 1s;
+}
+
+.add-assignments{
+    margin-left: 20px;
+    height: 54px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6f2fe;
+    color: #1c65f0;
+    font-size: 18px;
+}
+
+.add-assignments span{
+    margin-left: 10px;
+}
+
+.assignment-tabs{
+    margin-top: 65px;
+}
+
+.un-selected{
+    height: 54px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6f2fe;
+    color: #1c65f0;
+    font-size: 18px;
+}
+
+.selected{
+    height: 54px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #1c65f0;
+    font-size: 18px;
+}
+
+button:focus{
+    outline: none;
+}
+
+.date{
+    color: #5c5c5c;
+    margin-bottom: -10px;
+}

@@ -14,7 +14,7 @@ class TeacherDashboard extends React.Component{
         return (
             <div className="teacher-dashboard">
                 <div className="profile">
-                    <Avatar classname="user-avatar">M</Avatar>
+                    <Avatar className="user-avatar">M</Avatar>
                     <div className="user-name">Manish Sharma</div>
                     <Button
                         className="settings"
@@ -42,7 +42,7 @@ class TeacherDashboard extends React.Component{
                             </div>
                             <div className="right">
                             <div className="total-response">Total Response: 12</div>
-                                <div className="view-response">View Responses</div>                        
+                                <Link to="responses"><div className="view-response">View Responses</div></Link>
                             </div>
                         </div>
                         <div className="exam">
