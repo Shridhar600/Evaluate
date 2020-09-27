@@ -11,7 +11,7 @@ class UpcomingAssignment extends React.Component{
                     </div>
                     <div className="right">
                         <div className="total-response">12th September 2020, 8:30 - 11:30</div>
-                        <div className="view-response">View Responses</div>
+                        <div className="view-response">Start</div>
                     </div>
                 </div>
                 <div className="exam">
@@ -20,8 +20,8 @@ class UpcomingAssignment extends React.Component{
                         <div>Assignments Description</div>
                     </div>
                     <div className="right">
-                    <div className="total-response">Total Response: 37</div>
-                        <div className="view-response">View Responses</div>                        
+                    <div className="total-response">13th September 2020, 9:30 - 11:30</div>
+                        <div className="view-response">Start</div>                        
                     </div>
                 </div>
                 <div className="exam">
@@ -30,8 +30,8 @@ class UpcomingAssignment extends React.Component{
                         <div>Assignments Description</div>
                     </div>
                     <div className="right">
-                    <div className="total-response">Total Response: 40</div>
-                        <div className="view-response">View Responses</div>                        
+                    <div className="total-response">15th September 2020, 8:30 - 11:30</div>
+                        <div className="view-response">Start</div>                        
                     </div>
                 </div>
             </div>
