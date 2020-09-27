@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Button from '@material-ui/core/Button';
+import PublishIcon from '@material-ui/icons/Publish';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import './CreateExam.css'
 import Question from './Question'
@@ -32,6 +34,21 @@ class CreateExam extends React.Component{
     render(){
         return(
             <div className="create-exam">
+                <div className="exam-action-btn">
+                    <Button
+                        variant="contained"
+                        className="publish-exam"
+                        size="large"
+                        startIcon={<PublishIcon />}
+                    >Publish</Button>
+                    <Button
+                        variant="contained"
+                        className="remove-exam"
+                        size="large"
+                        startIcon={<DeleteIcon />}
+                    >Remove</Button>
+                </div>
+    
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <Paper className="paper" >
@@ -44,7 +61,7 @@ class CreateExam extends React.Component{
                         </Paper>
                     </Grid>
                 </Grid>
-                {/* <Question key={0} index={0} delete={this.deleteQuestion} /> */}
+                {/* <Question key={0} delete={this.deleteQuestion.bind(this, this.state.key)} /> */}
                 {this.state.questions}
                 <Button
                     variant="contained"

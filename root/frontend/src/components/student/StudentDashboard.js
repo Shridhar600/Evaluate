@@ -11,7 +11,7 @@ import UpcomingAssignments from './UpcomingAssignment'
 import SubmittedAssignments from './SubmittedAssignment'
 
 class StudentDashboard extends React.Component{
-    state = {selected: true, upcoming: false}
+    state = {selected: false, upcoming: false}
 
     onButtonClick = () =>{
         this.setState({selected: !this.state.selected, upcoming: !this.state.upcoming}, () => {
@@ -51,7 +51,7 @@ class StudentDashboard extends React.Component{
                         <button className={btn_class1} onClick={this.onButtonClick}>Upcoming</button>
                         <button className={btn_class2} onClick={this.onButtonClick}>Submitted</button>
                     </div>
-                    { this.state.upcoming === true && <UpcomingAssignments/> }
+                    { this.state.upcoming === false && <UpcomingAssignments/> }
                 </div>
             </div>
         )

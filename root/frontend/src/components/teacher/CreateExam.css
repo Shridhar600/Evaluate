@@ -38,3 +38,23 @@ input:focus{
     font-weight: 400;
     color: #cacaca;
 }
+
+.publish-exam{
+    background-color: #b2d8ff !important;
+    color: #1c65f0 !important;
+    margin-left: auto !important;
+    margin-right: 20px !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05) !important;
+}
+
+.exam-action-btn{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.remove-exam{
+    padding: 15px 30px !important;
+    background-color: rgb(255, 167, 167) !important;
+    color: red !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05) !important;
+}
