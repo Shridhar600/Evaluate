@@ -3,6 +3,9 @@ node_modules/
 # production
 build/
 
+# sensitive data/passwords
+keys.js
+
 # misc
 .DS_Store
 .env.local

@@ -8,10 +8,14 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 import './StudentDashboard.css'
 import UpcomingAssignments from './UpcomingAssignment'
-import SubmittedAssignments from './SubmittedAssignment'
+// import SubmittedAssignments from './SubmittedAssignment'
 
 class StudentDashboard extends React.Component{
     state = {selected: false, upcoming: false}
+
+    handleLogoutClick = () => {
+        window.open("http://localhost:5000/logout", "_self");
+    }
 
     onButtonClick = () =>{
         this.setState({selected: !this.state.selected, upcoming: !this.state.upcoming}, () => {
@@ -40,6 +44,7 @@ class StudentDashboard extends React.Component{
                         className="logout"
                         variant="outlined"
                         startIcon={<ExitToAppIcon />}
+                        onClick={this.handleLogoutClick}
                     >
                         Logout
                     </Button>

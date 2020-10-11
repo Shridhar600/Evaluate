@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Welcome.css'
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
@@ -10,10 +10,49 @@ import {useHistory} from 'react-router-dom';
 
 const Welcome = () =>{
     const [value, setValue] = React.useState('');
+    const [ID, setID] = React.useState('');
     const history = useHistory();
 
+    useEffect(() => {
+        fetch("http://localhost:5000/login/success", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true
+            }
+        })
+        .then(response => {
+            if (response.status === 200) return response.json();
+                throw new Error("failed to authenticate user");
+        })
+        .then(responseJson => {
+            setID(responseJson.user.googleId);
+        })
+        .catch(error => {
+            console.log(error)
+        });
+    }, [])
+
     const onFormSubmit = (event) => {
+        console.log(ID);
         event.preventDefault()
+
+        const data = { type:value, id:ID }
+        // Post Request
+        fetch("http://localhost:5000/typeselect", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            response.json()
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
         if (value === 'student'){            
             history.push('/student/dashboard');
         }
