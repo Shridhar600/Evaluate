@@ -15,54 +15,28 @@ class TeacherDashboard extends React.Component{
         window.open("http://localhost:5000/logout", "_self");
     }
 
+    handleProps = (props) => {
+        console.log(this.props.user)
+    }
+
     state = {
         user: {},
         error: null,
         authenticated: false,
         profilePic: ""
     };   
-    
-    componentDidMount() {
-        fetch("http://localhost:5000/login/success", {
-            method: "GET",
-            credentials: "include",
-            headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true
-            }
-        })
-        .then(response => {
-            if (response.status === 200) return response.json();
-                throw new Error("failed to authenticate user");
-        })
-        .then(responseJson => {
-            this.setState({
-                authenticated: true,
-                user: responseJson.user,
-                profilePic: responseJson.user._json['picture']
-            });
-            console.log(responseJson)
-        })
-        .catch(error => {
-            this.setState({
-                authenticated: false,
-                error: "Failed to authenticate user"
-            });
-        });
-        console.log("This is teachers")
-    }
 
     render(){
         return (
             <div className="teacher-dashboard">
                 <div className="profile">
-                    <Avatar src={this.state.profilePic} ></Avatar>
-                        <div className="user-name">{this.state.user.displayName}</div>
+                    <Avatar src={this.props.user.profileImage}></Avatar>
+                        <div className="user-name">{this.props.user.screenName}</div>
                     <Button
                         className="settings"
                         variant="outlined"
                         startIcon={<SettingsIcon />}
+                        onClick={this.handleProps}
                     >
                         Settings
                     </Button>

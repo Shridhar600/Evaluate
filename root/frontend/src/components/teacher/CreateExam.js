@@ -9,11 +9,24 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import './CreateExam.css'
 import Question from './Question'
+import ExamSettings from './ExamSettings';
 
 
 class CreateExam extends React.Component{
 
-    state = { questions: [], key:0}
+    state = { questions: [], key: 0, popUp: false, examTitle: "Untitled", examDes: "Exam Description"}
+
+    onExamTitleChange = (event) => {
+        this.setState({examTitle: event.target.value})
+    };
+
+    onExamDesChange = (event) => {
+        this.setState({examDes: event.target.value})
+    }
+
+    togglePopup = () => {
+        this.setState({popUp: !this.state.popUp})
+    }
 
     deleteQuestion = (key) => {
         const index = this.state.questions.findIndex((question) => {
@@ -40,6 +53,7 @@ class CreateExam extends React.Component{
                         className="publish-exam"
                         size="large"
                         startIcon={<PublishIcon />}
+                        onClick={this.togglePopup}
                     >Publish</Button>
                     <Button
                         variant="contained"
@@ -48,15 +62,15 @@ class CreateExam extends React.Component{
                         startIcon={<DeleteIcon />}
                     >Remove</Button>
                 </div>
-    
+                
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <Paper className="paper" >
                             <div>
-                                <input className="exam-title" value="Untitled" />                                
+                                <input className="exam-title" onChange={this.onExamTitleChange} value={this.state.examTitle} />
                             </div>
                             <div>
-                                <input className="exam-description" value="Exam-description" />
+                                <input className="exam-description" onChange={this.onExamDesChange} value={this.state.examDes} />
                             </div>
                         </Paper>
                     </Grid>
@@ -71,6 +85,12 @@ class CreateExam extends React.Component{
                     startIcon={<AddCircleIcon />}
                     onClick={this.addQuestion}
                 >Add</Button>
+                {this.state.popUp && <ExamSettings
+                    user = {this.props.user}
+                    title = {this.state.examTitle}
+                    desc = {this.state.examDes}
+                    handleClose={this.togglePopup}
+                />}
             </div>
         )
     }

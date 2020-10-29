@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import HomePage from './HomePage'
 import Navbar from './Navbar'
@@ -12,37 +12,65 @@ import Responses from './teacher/Responses'
 
 class App extends React.Component{
     state = {
-        data: null
+        user: {},
+        authenticated: false,
+        profilePic: "",
+        type: null,
+        error: null
     };
     
-    componentDidMount() {
-        // Call our fetch function below once the component mounts
-        this.callBackendAPI()
-        .then(res => this.setState({ data: res.express }))
-        .catch(err => console.log(err));
+    componentDidMount(){
+        fetch("http://localhost:5000/login/success", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            }
+        })
+        .then(response => {
+            if (response.status === 200) return response.json();
+                throw new Error("failed to authenticate user");
+        })
+        .then(responseJson => {
+            console.log(responseJson)
+            this.setState({
+                authenticated: true,
+                user: responseJson.user,
+                type: responseJson.user.type,
+                profilePic: responseJson.user.profileImage
+            }, () => console.log(this.state.type));
+        })
+        .catch(error => {
+            this.setState({
+                authenticated: false,
+                error: "Failed to authenticate user"
+            })
+        });
     }
 
-    callBackendAPI = async () => {
-        const response = await fetch('/');
-        const body = await response.json();
-    
-        if (response.status !== 200) {
-          throw Error(body.message) 
-        }
-        return body;
-    };
-
     render(){
+        const { authenticated } = this.state;
+        const path = `/${this.state.type}/dashboard`
         return (
             <div>
                 <Navbar />
+                <div>
+                    {!authenticated ? (
+                        <Redirect to="/" />
+                    ):(
+                        <Redirect to={path} />
+                    )}
+                </div>
+
                 <Switch>
                     <Route component={HomePage} exact path="/" />
-                    <Route component={SignIn} path="/signin" />
-                    <Route component={Welcome} path="/welcome" />
+                    <Route path="/signin" render={(props) => <SignIn {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
+                    <Route path="/welcome" render={(props) => <Welcome {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
                     <Route component={StudentDashboard} path="/student/dashboard" />
-                    <Route component={TeacherDashboard} path="/teacher/dashboard" />
-                    <Route component={CreateExam} path="/teacher/new" />
+                    <Route path="/teacher/dashboard" render={(props) => <TeacherDashboard {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
+                    <Route path="/teacher/new" render={(props) => <CreateExam {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
                     <Route component={Responses} path="/teacher/responses" />
                 </Switch>
             </div>

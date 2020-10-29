@@ -31,11 +31,13 @@ input:focus{
 .exam-title{
     font-size: 30px;
     font-weight: 450;
+    width: 700px;
 }
 
 .exam-description{
     font-size: 15px;
     font-weight: 400;
+    width: 700px;
     color: #cacaca;
 }
 

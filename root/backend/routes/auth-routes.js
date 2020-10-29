@@ -1,35 +1,58 @@
 const router = require("express").Router();
 const passport = require("passport")
-const Client_Home_Page_URL = "http://localhost:3000";
-const Login_Success_URL = "http://localhost:3000/teacher/dashboard";
 
-
-// After successful login, retrieve user info
-router.get("/login/success", (req, res) => {
-    res.send(`Welcome ${req.user}`)
+//Unprotected Routes
+router.get('/', (req, res) => {
+    res.send('<h1>Home</h1>')
 });
 
-
-// After failed login, send fail message
-router.get("/login/failed", (req, res) => {
-    res.send("You failed to log in")
+router.get('/failed', (req, res) => {
+    res.send('<h1>Log in Failed :(</h1>')
 });
 
+// Middleware - Check user is Logged in
+const checkUserLoggedIn = (req, res, next) => {
+    req.user ? next(): res.sendStatus(401);
+}
 
-// When Logout, redirect to Client Home Page
-router.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect(Client_Home_Page_URL);
+//Protected Route.
+router.get('/login/success', checkUserLoggedIn, (req, res) => {
+    if (req.user) {
+        res.json({
+            success: true,
+            message: "user has successfully authenticated",
+            user: req.user,
+            cookies: req.cookies
+        });
+    }
 });
 
-router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+// Auth Routes
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-// Redirect to Home Page after a Successful Login
-router.get("/google/redirect",passport.authenticate("google", 
-    { failureRedirect: "/login/failed" }),
-    function(req, res){
-        res.redirect(Login_Success_URL)
+router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
+    function(req, res) {
+        res.redirect('http://localhost:3000/welcome');
     }
 );
+  
+  
+  // updating database with selected user type
+router.post('/typeselect', (req, res) => {
+    User.updateOne({ googleId: req.body.id }, { type: req.body.type }, function(err, result){
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(result);
+      }
+    })
+})
+  
+  //Logout
+router.get('/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('http://localhost:3000');
+})
 
 module.exports = router;

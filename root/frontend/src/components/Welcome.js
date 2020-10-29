@@ -13,30 +13,8 @@ const Welcome = () =>{
     const [ID, setID] = React.useState('');
     const history = useHistory();
 
-    useEffect(() => {
-        fetch("http://localhost:5000/login/success", {
-            method: "GET",
-            credentials: "include",
-            headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true
-            }
-        })
-        .then(response => {
-            if (response.status === 200) return response.json();
-                throw new Error("failed to authenticate user");
-        })
-        .then(responseJson => {
-            setID(responseJson.user.googleId);
-        })
-        .catch(error => {
-            console.log(error)
-        });
-    }, [])
-
     const onFormSubmit = (event) => {
-        console.log(ID);
+        setID(this.props.user.googleId)
         event.preventDefault()
 
         const data = { type:value, id:ID }

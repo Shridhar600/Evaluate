@@ -7,7 +7,8 @@ const userSchema = new Schema({
     name: {type:String},
     email: {type:String},
     profileImage: {type:String},
-    type: {type:String}
+    type: {type:String},
+    createdExams: []
 })
 
 const User = mongoose.model("user", userSchema);
