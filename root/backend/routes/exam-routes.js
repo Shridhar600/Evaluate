@@ -14,21 +14,26 @@ router.post('/create', async(req, res) => {
     try {
         var data = {
             createdBy : req.body.createdBy,
-            examTitle : req.body.title,
-            examDescription : req.body.description
+            examTitle : req.body.examTitle,
+            examDescription : req.body.examDescription,
+            examDate: req.body.examDate,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime
         }
-        var newExam = new Exam(data)
-        await newExam.save().then((docs) => {
-            User.updateOne(
-                {_id: data.createdBy},
-                { $push: {createdExams: docs._id}}
-            ).then(() =>{
-                console.log("Exam id added to user database")
-            }).catch(err => console.log(err))
-            res.status(200).json(
-                docs
-            );
-        })
+        // console.log(req.body)
+        // var newExam = new Exam(data)
+        new Exam(data).save();
+        // await newExam.save().then((docs) => {
+        //     User.updateOne(
+        //         {_id: data.createdBy},
+        //         { $push: {createdExams: docs._id}}
+        //     ).then(() =>{
+        //         console.log("Exam id added to user database")
+        //     }).catch(err => console.log(err))
+        //     res.status(200).json(
+        //         docs
+        //     );
+        // })
     } catch (err) {
         res.send(err)
     }

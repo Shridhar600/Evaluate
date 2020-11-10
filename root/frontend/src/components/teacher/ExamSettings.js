@@ -33,7 +33,7 @@ class ExamSettings extends React.Component{
             endTime: this.state.endDate.toTimeString()
         }
 
-        ExamServices.createForm(data)
+        ExamServices.createExam(data)
         .then((result) => {     
             console.log(result);
            },

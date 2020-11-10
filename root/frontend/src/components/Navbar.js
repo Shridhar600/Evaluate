@@ -13,10 +13,6 @@ class Navbar extends React.Component{
                         <InsertChartIcon style={{ fontSize: 35 }} />Evaluate
                     </Link>
                 </div>
-                <div className="nav-link">
-                    {/* <a href="">Login</a>
-                    <a href="">Sign Up</a> */}
-                </div>
             </nav>
         )
     }

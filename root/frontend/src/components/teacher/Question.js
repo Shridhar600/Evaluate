@@ -9,22 +9,51 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 
 import './Question.css'
-import MultipleChoice from './Ques/MultipleChoice'
-import ShortAnswer from './Ques/ShortAnswer'
-import MultipleAnswer from './Ques/MultipleAnswer'
+// import MultipleChoice from './Ques/MultipleChoice'
+// import ShortAnswer from './Ques/ShortAnswer'
+// import MultipleAnswer from './Ques/MultipleAnswer'
 
 
 class Question extends React.Component{
-    state = {open:false, questype: 'multiple-choice'}
+    state = {
+        open:false, 
+        questype: 'multiple-choice', 
+        quesString: "",
+        optionOneString: "",
+        optionTwoString: "",
+        optionThreeString: "",
+        optionFourString: "",
+    }
 
     onFormSubmit = (event) => {
         event.preventDefault()
     }
 
     handleRadioChange = (event) => {
+        console.log(event.target.value)
     };
+
+    handleOptionOne = (event) => {
+        this.setState({optionOneString: event.target.value})
+    }
+
+    handleOptionTwo = (event) => {
+        this.setState({optionTwoString: event.target.value})
+    }
+
+    handleOptionThree = (event) => {
+        this.setState({optionThreeString: event.target.value})
+    }
+
+    handleOptionFour = (event) => {
+        this.setState({optionFourString: event.target.value})
+    }
 
     handleChange = (event) => {
         this.setState({questype: event.target.value})
@@ -38,11 +67,10 @@ class Question extends React.Component{
         this.setState({open:true})
     };
 
-    // handleQuesionType = (event) =>{
-    //     // event.preventDefault()
-    //     console.log(this.state.questype)
-    // }
-
+    handleQuesStringChange = (e) => {
+        this.setState({quesString: e.target.value}, () => console.log(this.state.quesString))
+    }
+    
     render(){
 
         return(
@@ -51,11 +79,22 @@ class Question extends React.Component{
                     <Grid item xs={12} className="grid" >
                         <Paper className="paper" >
                             <div className="question" >
-                                <input placeholder="Question" />
-                            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                            {this.state.questype === "multiple-choice" && <MultipleChoice/>}
+                                {/* input length needs to be changed */}
+                                <input value={this.state.quesString} onChange={this.handleQuesStringChange} placeholder="Question" />
+                            </div>      
+                            
+                            {/* Just for mcq as of now */}
+                            <FormControl>
+                                <RadioGroup className="mcq-option" aria-label="quiz" name="type" onChange={this.handleRadioChange}>
+                                    <div><FormControlLabel value="option1" control={<Radio />} /><input placeholder="Option1" value={this.state.optionOneString} onChange={this.handleOptionOne} /></div>
+                                    <div><FormControlLabel value="option2" control={<Radio />} /><input placeholder="Option2" value={this.state.optionTwoString} onChange={this.handleOptionTwo} /></div>
+                                    <div><FormControlLabel value="option3" control={<Radio />} /><input placeholder="Option3" value={this.state.optionThreeString} onChange={this.handleOptionThree} /></div>
+                                    <div><FormControlLabel value="option4" control={<Radio />} /><input placeholder="Option4" value={this.state.optionFourString} onChange={this.handleOptionFour} /></div>
+                                </RadioGroup>
+                            </FormControl>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                            {/* {this.state.questype === "multiple-choice" && <MultipleChoice/>}
                             {this.state.questype === "multiple-answer" && <MultipleAnswer/>}
-                            {this.state.questype === "short-answer" && <ShortAnswer/>}
+                            {this.state.questype === "short-answer" && <ShortAnswer/>} */}
                             <hr />
                             <div>
                                 <div className="action-btn">

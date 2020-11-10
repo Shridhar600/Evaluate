@@ -9,17 +9,28 @@
     color: rgb(136, 136, 136);
 }
 
-.mcq-option{
-    margin: 5px 10px;
-    color: rgb(136, 136, 136);
+.mcq-option .MuiFormControl-root{
+    width: 100% !important;
 }
 
-label{
+.mcq-option input{
+    width: 30%;
+    margin-left: 15px;
+}
+
+.mcq-option{
+    display: flex !important;
+    margin: 20px 10px;
+    color: rgb(94, 57, 57);
+}
+
+.MuiFormControlLabel-root{
     margin: 0px;
+    width: 5%;
 }
 
 .question-type{
-    min-width: 200px !important;
+    width: 30% ;
 }
 
 .add-ques{

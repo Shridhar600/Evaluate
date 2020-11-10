@@ -26,19 +26,16 @@ class CreateExam extends React.Component{
 
     togglePopup = () => {
         this.setState({popUp: !this.state.popUp})
+        console.log(this.state.questions)
     }
 
-    deleteQuestion = (key) => {
-        const index = this.state.questions.findIndex((question) => {
-            return question.key === key
-        })
-        const CopyQuestionsArray = Object.assign([], this.state.questions)
-        CopyQuestionsArray.splice(index, 1) 
-        this.setState({questions:CopyQuestionsArray})
+    deleteQuestion = (i) => {
+        const arr = this.state.questions.filter((question) => question.key != i);
+        this.setState({questions : arr})
     }
 
     addQuestion = () =>{
-        this.setState({
+        this.setState({ 
             questions: [...this.state.questions, <Question key={this.state.key} delete={this.deleteQuestion.bind(this, this.state.key)} />],
             key: this.state.key+1
         })

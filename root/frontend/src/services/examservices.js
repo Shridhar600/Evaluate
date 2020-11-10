@@ -3,13 +3,13 @@ const API_URL = "http://localhost:5000/exam/";
 
 
 export default {
-    async getForms(userId){
+    async getExams(userId){
         const response = await axios
             .get(API_URL + "getuserexams/" + userId);
         return response.data;
     },
 
-    async createForm(data){
+    async createExam(data){
         console.log(data);
         const response = await axios
             .post(API_URL + "create", data);
@@ -17,7 +17,7 @@ export default {
         return response.data;
     },
 
-    async getForm(examId){
+    async getExam(examId){
         const response = await axios
             .get(API_URL + "exam/" + examId);
         return response.data;

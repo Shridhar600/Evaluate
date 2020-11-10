@@ -2,11 +2,11 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 
-const OptionSchema = new Schema({
-    optionNo: {type: String},
-    option: {type: String},
-    isCorrect: {type: Boolean}
-});
+// const OptionSchema = new Schema({
+//     optionNo: {type: String},
+//     option: {type: String},
+//     isCorrect: {type: Boolean}
+// });
 
 const ExamSchema = new Schema({
     createdBy: {
@@ -16,11 +16,19 @@ const ExamSchema = new Schema({
     },
     examTitle: {type: String},
     examDescription: {type: String},
-    examDate: {type: Date},
-    startTime: {type: Number},
-    endTime: {type: Number},
+    examDate: {type: String},
+    startTime: {type: String},
+    endTime: {type: String},
     noOfQues: {type: Number},
-    questions: {type: [{quesNo: Number, ques: String, options: [OptionSchema]}]},
+    questions: [{
+        quesNo: Number, 
+        ques: String, 
+        options: {
+            optionNo: {type: String},
+            option: {type: String},
+            isCorrect: {type: Boolean}
+        }
+    }],
     examinees: {type: [String]}
 });
 
