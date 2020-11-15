@@ -4,6 +4,7 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import HomePage from './HomePage'
 import Navbar from './Navbar'
 import SignIn from './SignIn'
+import OneExam from './teacher/OneExam'
 import Welcome from './Welcome'
 import StudentDashboard from './student/StudentDashboard'
 import TeacherDashboard from './teacher/TeacherDashboard'
@@ -72,6 +73,7 @@ class App extends React.Component{
                     <Route path="/teacher/dashboard" render={(props) => <TeacherDashboard {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
                     <Route path="/teacher/new" render={(props) => <CreateExam {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
                     <Route component={Responses} path="/teacher/responses" />
+                    <Route path="/oneexam" component={OneExam} />
                 </Switch>
             </div>
         )

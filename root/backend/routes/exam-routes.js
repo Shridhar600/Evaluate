@@ -18,22 +18,24 @@ router.post('/create', async(req, res) => {
             examDescription : req.body.examDescription,
             examDate: req.body.examDate,
             startTime: req.body.startTime,
-            endTime: req.body.endTime
+            endTime: req.body.endTime,
+            questions: req.body.questions,
+            noOfQues: req.body.noOfQues
         }
         // console.log(req.body)
-        // var newExam = new Exam(data)
-        new Exam(data).save();
-        // await newExam.save().then((docs) => {
-        //     User.updateOne(
-        //         {_id: data.createdBy},
-        //         { $push: {createdExams: docs._id}}
-        //     ).then(() =>{
-        //         console.log("Exam id added to user database")
-        //     }).catch(err => console.log(err))
-        //     res.status(200).json(
-        //         docs
-        //     );
-        // })
+        var newExam = new Exam(data)
+        // new Exam(data).save();
+        await newExam.save().then((docs) => {
+            User.updateOne(
+                {_id: data.createdBy},
+                { $push: {createdExams: docs._id}}
+            ).then(() =>{
+                console.log("Exam id added to user database")
+            }).catch(err => console.log(err))
+            res.status(200).json(
+                docs
+            );
+        })
     } catch (err) {
         res.send(err)
     }
@@ -123,18 +125,24 @@ router.put("/editexam", async(req, res) => {
 router.get('/getuserexams/:userId', async(req, res)=> {
     try{
         var userId = req.params.userId;
-        console.log(userId);
         await User.findOne({_id: userId})
         .then(async(user)=>{
             if(user==null){
                 res.status(404).send("User doesn't exist")   
             }
             else{
-                await (await Exam.find().where('_id')).includes(user.createdExams).exec((err, records) => {
-                    console.log(records);
+                var id = [];
+                id.push.apply(id, user.createdExams)
 
-                    res.status(200).json(records);
-                })
+                var records = await Exam.find({ _id: id})
+                res.send(records)
+                // Exam.find().where('_id')).includes(user.createdExams).exec((err, records) => {
+                //     console.log(records);
+                //     console.log("Hi1")
+
+                //     res.status(200).json(records);
+                // })
+                // console.log(user)
             }
         })
     }catch(err){

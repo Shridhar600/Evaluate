@@ -21,13 +21,12 @@ const ExamSchema = new Schema({
     endTime: {type: String},
     noOfQues: {type: Number},
     questions: [{
-        quesNo: Number, 
-        ques: String, 
-        options: {
+        questionText: {type: String},
+        options: [{
             optionNo: {type: String},
-            option: {type: String},
-            isCorrect: {type: Boolean}
-        }
+            optionText: {type: String},
+            isCorrect: {type: Boolean, default: false}
+        }]
     }],
     examinees: {type: [String]}
 });

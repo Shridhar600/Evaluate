@@ -8,10 +8,11 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import Button from '@material-ui/core/Button';
 import PublishIcon from '@material-ui/icons/Publish';
+import { Redirect } from 'react-router-dom';
 
 class ExamSettings extends React.Component{
 
-    state = {startDate: new Date(), endDate: new Date()}
+    state = {startDate: new Date(), endDate: new Date(), redirect: true}
 
     handleDateChange = (date) => {
         this.setState({startDate: date})
@@ -23,14 +24,25 @@ class ExamSettings extends React.Component{
 
     handlePublishOnClick = () => {
         var date = this.state.startDate
+        var enddate = this.state.endDate
         var finaldate = date.getDate() + '-' +  (date.getMonth() + 1)  + '-' +  date.getFullYear()
+
+        var finalStartTime = date.getHours() + ':' + date.getMinutes()
+        var finalEndTime = enddate.getHours() + ':' + enddate.getMinutes()
+
+
+        console.log(finalStartTime)
+        console.log(finalEndTime)
+
         var data = {
+            noOfQues: this.props.noOfQues,
             createdBy: this.props.user,
             examTitle: this.props.title,
             examDescription: this.props.desc,
             examDate: finaldate,
-            startTime: this.state.startDate.toTimeString(),
-            endTime: this.state.endDate.toTimeString()
+            questions: this.props.questions,
+            startTime: finalStartTime,
+            endTime: finalEndTime
         }
 
         ExamServices.createExam(data)
@@ -50,7 +62,13 @@ class ExamSettings extends React.Component{
     }
 
     render(){
-        return(
+        const {redirect} = this.state.redirect
+
+        return(    
+            <div>
+            {redirect ? (
+                <Redirect to="/student/dashboard" />
+            ):
             <div className="popup-box">
                 <div className="box">
                     <span className="close-icon" onClick={this.props.handleClose}>x</span>
@@ -58,7 +76,7 @@ class ExamSettings extends React.Component{
                     <form noValidate autoComplete="off">
                         <div>
                             <span>Number of Questions</span>
-                            <TextField id="standard-basic" value="20" />
+                            <TextField id="standard-basic" value={this.props.noOfQues} />
                         </div>
                     </form>
                     <MuiPickersUtilsProvider utils={DateFnsUtils} className="exam-start-date">
@@ -108,6 +126,8 @@ class ExamSettings extends React.Component{
                         onClick={this.handlePublishOnClick}
                     >Publish</Button>
                 </div>
+            </div>
+            }
             </div>
         )
     }
