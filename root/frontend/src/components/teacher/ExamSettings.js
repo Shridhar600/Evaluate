@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 
 class ExamSettings extends React.Component{
 
-    state = {startDate: new Date(), endDate: new Date(), redirect: true}
+    state = {startDate: new Date(), endDate: new Date(), redirect: true, published: false}
 
     handleDateChange = (date) => {
         this.setState({startDate: date})
@@ -29,6 +29,8 @@ class ExamSettings extends React.Component{
 
         var finalStartTime = date.getHours() + ':' + date.getMinutes()
         var finalEndTime = enddate.getHours() + ':' + enddate.getMinutes()
+
+        this.setState({published: true},() => console.log(this.state.published))
 
 
         console.log(finalStartTime)
@@ -63,12 +65,19 @@ class ExamSettings extends React.Component{
 
     render(){
         const {redirect} = this.state.redirect
+        const published = this.state.published
+        let code;
+        if(published) {
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < 10; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            code = result
+        }
 
         return(    
-            <div>
-            {redirect ? (
-                <Redirect to="/student/dashboard" />
-            ):
             <div className="popup-box">
                 <div className="box">
                     <span className="close-icon" onClick={this.props.handleClose}>x</span>
@@ -118,6 +127,11 @@ class ExamSettings extends React.Component{
                             />
                         </Grid>
                     </MuiPickersUtilsProvider>
+                    <br></br>
+                    <div>
+                        <span>Code:  </span>
+                        {code}
+                    </div>
                     <Button
                         variant="contained"
                         className="publish-exam-s"
@@ -126,8 +140,6 @@ class ExamSettings extends React.Component{
                         onClick={this.handlePublishOnClick}
                     >Publish</Button>
                 </div>
-            </div>
-            }
             </div>
         )
     }

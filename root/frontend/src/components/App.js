@@ -10,6 +10,7 @@ import StudentDashboard from './student/StudentDashboard'
 import TeacherDashboard from './teacher/TeacherDashboard'
 import CreateExam from './teacher/CreateExam'
 import Responses from './teacher/Responses'
+import dummyExam1 from './student/dummyExam1'
 
 class App extends React.Component{
     state = {
@@ -74,6 +75,7 @@ class App extends React.Component{
                     <Route path="/teacher/new" render={(props) => <CreateExam {...props} authenticated={this.state.authenticated} user={this.state.user} />} />
                     <Route component={Responses} path="/teacher/responses" />
                     <Route path="/oneexam" component={OneExam} />
+                    <Route path="/attempt" component={dummyExam1} />
                 </Switch>
             </div>
         )

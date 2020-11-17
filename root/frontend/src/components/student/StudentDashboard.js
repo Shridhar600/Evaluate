@@ -11,10 +11,16 @@ import UpcomingAssignments from './UpcomingAssignment'
 // import SubmittedAssignments from './SubmittedAssignment'
 
 class StudentDashboard extends React.Component{
-    state = {selected: false, upcoming: false}
+    state = {selected: false, upcoming: false, add: false}
 
     handleLogoutClick = () => {
         window.open("http://localhost:5000/logout", "_self");
+    }
+
+    handleOnAdd = () => {
+        this.setState({add: true}, () => {
+            console.log(this.state.add)
+        })
     }
 
     onButtonClick = () =>{
@@ -51,12 +57,12 @@ class StudentDashboard extends React.Component{
                 </div>
                 <div className="assignments">
                     <input className="assignment-code" placeholder="Enter Code"></input>
-                    <button className="add-assignments"><AddCircleIcon/><span>Add</span></button>
+                    <button onClick={this.handleOnAdd} className="add-assignments"><AddCircleIcon/><span>Add</span></button>
                     <div className="assignment-tabs">
                         <button className={btn_class1} onClick={this.onButtonClick}>Upcoming</button>
                         <button className={btn_class2} onClick={this.onButtonClick}>Submitted</button>
                     </div>
-                    { this.state.upcoming === false && <UpcomingAssignments/> }
+                    { this.state.upcoming === false && <UpcomingAssignments add={this.state.add}/> }
                 </div>
             </div>
         )

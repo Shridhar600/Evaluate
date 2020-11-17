@@ -46,7 +46,7 @@ class CreateExam extends React.Component{
     questionsUI = () => {
         return this.state.exam.questions.map((ques, i) => (
            <div key={i}>
-               <Grid container spacing={4}>
+                <Grid container spacing={4}>
                     <Grid item xs={12} className="grid" >
                         <Paper className="paper" >
                             <div className="question" >

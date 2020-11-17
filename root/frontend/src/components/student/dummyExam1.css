@@ -1,0 +1,115 @@
+.question{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 6px !important;
+    margin: 20px 0px;
+    padding: 10px 20px;
+}
+
+.question input{
+    width: 100%;
+    color: rgb(136, 136, 136);
+}
+
+.MuiFormControl-root{
+    width: 30% !important;
+}
+
+.mcq-option input{
+    width: 80%;
+}
+
+.mcq-option{
+    display: flex !important;
+    margin: 20px 10px;
+    color: rgb(94, 57, 57);
+}
+
+.MuiFormControlLabel-root{
+    margin: 0px;
+    width: 5%;
+}
+
+.question-type{
+    width: 30% ;
+}
+
+.add-ques{
+    margin-top: 20px !important;
+    padding: 20px;
+}
+
+.del-ques{
+    height: 50px;
+    margin-left: auto !important;
+}
+
+.action-btn{
+    display: flex;
+}
+
+.m-ans{
+    color: rgb(136, 136, 136);
+}
+
+.create-exam{
+    font-size: 20px;
+    padding: 30px 200px;
+    background-color: #e6f2fe;
+    color: #252f3f;
+    min-height: 100vh;
+}
+
+.create-exam .paper{
+    padding: 10px 50px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05) !important; 
+}
+
+.create-exam .paper div{
+    border-radius: 1px;
+    margin-bottom: 5px;
+}
+
+input{
+    text-decoration: none;
+    border: 0;
+    padding: 3px 0px;
+}
+
+input:focus{
+    text-decoration: none;
+    border: 0;
+    outline: none;
+}
+
+.exam-title{
+    font-size: 30px;
+    font-weight: 450;
+    width: 700px;
+}
+
+.exam-description{
+    font-size: 15px;
+    font-weight: 400;
+    width: 700px;
+    color: #cacaca;
+}
+
+.publish-exam{
+    background-color: #b2d8ff !important;
+    color: #1c65f0 !important;
+    margin-left: auto !important;
+    margin-right: 20px !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05) !important;
+}
+
+.exam-action-btn{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.remove-exam{
+    padding: 15px 30px !important;
+    background-color: rgb(255, 167, 167) !important;
+    color: red !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05) !important;
+}
