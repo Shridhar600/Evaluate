@@ -10,11 +10,11 @@ class UpcomingAssignment extends React.Component{
         if (add){
             ques = (<div className="exam">
                         <div className="left">
-                            <div className="subject">Untitled</div>
-                            <div>Assignments Description</div>
+                            <div className="subject">Demo Exam 1</div>
+                            <div>For Project evaluation</div>
                         </div>
                         <div className="right">
-                            <div className="total-response">12th September 2020, 8:30 - 11:30</div>
+                            <div className="total-response">18th November 2020, 12:20 AM - 12:30 AM </div>
                             <Link to="/attempt/"><div className="view-response">Start</div></Link>
                         </div>
                     </div>
@@ -26,11 +26,11 @@ class UpcomingAssignment extends React.Component{
                 {ques}
                 <div className="exam">
                     <div className="left">
-                        <div className="subject">Untitled3</div>
+                        <div className="subject">Check </div>
                         <div>Assignments Description</div>
                     </div>
                     <div className="right">
-                    <div className="total-response">15th September 2020, 8:30 - 11:30</div>
+                    <div className="total-response">15th December 2020, 8:30 - 11:30</div>
                         <Link to="/attempt/"><div className="view-response">Start</div></Link>
                     </div>
                 </div>

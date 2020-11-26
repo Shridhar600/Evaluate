@@ -36,8 +36,8 @@ class StudentDashboard extends React.Component{
         return (
             <div className="student-dashboard">
                 <div className="profile">
-                    <Avatar className="user-avatar">M</Avatar>
-                    <div className="user-name">Manish Sharma</div>
+                    <Avatar className="user-avatar">H</Avatar>
+                    <div className="user-name">Honey</div>
                     <Button
                         className="settings"
                         variant="outlined"

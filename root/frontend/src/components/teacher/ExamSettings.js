@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 
 class ExamSettings extends React.Component{
 
-    state = {startDate: new Date(), endDate: new Date(), redirect: true, published: false}
+    state = {startDate: new Date(), endDate: new Date(), redirect: true, published: false, text: ""}
 
     handleDateChange = (date) => {
         this.setState({startDate: date})
@@ -23,6 +23,7 @@ class ExamSettings extends React.Component{
     };
 
     handlePublishOnClick = () => {
+        this.setState({text: "Quiz has been published."})
         var date = this.state.startDate
         var enddate = this.state.endDate
         var finaldate = date.getDate() + '-' +  (date.getMonth() + 1)  + '-' +  date.getFullYear()
@@ -132,6 +133,7 @@ class ExamSettings extends React.Component{
                         <span>Code:  </span>
                         {code}
                     </div>
+                    <div>{this.state.text}</div>
                     <Button
                         variant="contained"
                         className="publish-exam-s"

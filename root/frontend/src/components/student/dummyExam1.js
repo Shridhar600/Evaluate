@@ -30,10 +30,10 @@ class dummyExam1 extends React.Component{
                     <Grid item xs={12}>
                         <Paper className="paper" >
                             <div>
-                                <input className="exam-title" readOnly value="Untitled" />
+                                <input className="exam-title" readOnly value="Demo Exam 1" />
                             </div>
                             <div>
-                                <input className="exam-description" readOnly value="Exam" />
+                                <input className="exam-description" readOnly value="For Project Evaluation" />
                             </div>
                         </Paper>
                     </Grid>
